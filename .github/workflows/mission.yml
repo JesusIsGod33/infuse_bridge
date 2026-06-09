@@ -1,0 +1,14 @@
+name: TITAN_MISSION
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Target to scan'
+        required: true
+        default: 'example.com'
+jobs:
+  run:
+    runs-on: self-hosted
+    steps:
+      - name: Exec Nuclei
+        run: nuclei -u ${{ github.event.inputs.target }}
